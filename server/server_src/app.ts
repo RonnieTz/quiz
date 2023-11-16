@@ -1,6 +1,5 @@
 import express from "express";
 import { connectDB } from "./mongo.js";
-// import { dirname } from "./dirname.cjs";
 import { join } from "path";
 import cors from "cors";
 import { hashSync, compareSync } from "bcrypt";
