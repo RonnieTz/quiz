@@ -86,7 +86,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(join(dirname, "index.html"));
+  res.sendFile("index.html");
 });
 
 app.listen(3000, () => {
