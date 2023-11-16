@@ -9,7 +9,10 @@ const Finished = () => {
     <div className="finished">
       <h1>You scored</h1>
       <h2>{`${totalCorrectAnswers} / ${questions.length}`}</h2>
-      <img src="src/assets/finger.jpg" alt="middle finger" />
+      <img
+        src="https://i.ebayimg.com/images/g/WawAAOSwacJbJkM5/s-l1600.jpg"
+        alt="middle finger"
+      />
     </div>
   );
 };
