@@ -19,8 +19,10 @@ const Navbar = () => {
       {state === "login" && <RegisterButton />}
       {state === "register" && <LoginButton />}
       {state === "logged_in" && gameStatus === "options" && <StartGameButton />}
-      {(state === "logged_in" && gameStatus === "finished") ||
-        (gameStatus === "playing" && <NewGameButton />)}
+      {state === "logged_in" &&
+        (gameStatus === "finished" || gameStatus === "playing") && (
+          <NewGameButton />
+        )}
       {state === "logged_in" && <Logout />}
     </nav>
   );
