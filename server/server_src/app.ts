@@ -10,7 +10,7 @@ import "dotenv/config.js";
 import { fetchQuestions } from "./fetchQuestions.js";
 const tokenKey = process.env.TOKEN_KEY as string;
 const app = express();
-app.use(express.static(join(dirname, "dist")));
+app.use(express.static(dirname));
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 
@@ -86,7 +86,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(join(dirname, "dist", "index.html"));
+  res.sendFile(join(dirname, "index.html"));
 });
 
 app.listen(3000, () => {
