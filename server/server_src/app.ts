@@ -66,7 +66,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password } = await req.body;
   const encoded = hashSync(password, 10);
   const existingUser = await User.findOne({ username });
   console.log(req.body);
