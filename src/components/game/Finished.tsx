@@ -9,6 +9,7 @@ const Finished = () => {
     <div className="finished">
       <h1>You scored</h1>
       <h2>{`${totalCorrectAnswers} / ${questions.length}`}</h2>
+      <img src="src/assets/finger.jpg" alt="middle finger" />
     </div>
   );
 };
