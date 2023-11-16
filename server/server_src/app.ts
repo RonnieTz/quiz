@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 
 connectDB();
+console.log(dirname);
 
 app.post("/greet", async (req, res) => {
   const { token } = req.body;
@@ -86,7 +87,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(dirname + "/index.html");
+  res.sendFile("./index.html");
 });
 
 app.listen(3000, () => {
