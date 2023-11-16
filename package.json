@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "tsc": "tsc --project tsconfig.server.json --watch",
-    "server": "nodemon server/server_dist/app.js"
+    "server": "nodemon server/server_dist/app.js",
+    "fake": ""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
