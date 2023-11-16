@@ -1,6 +1,6 @@
 import express from "express";
 import { connectDB } from "./mongo.js";
-import { dirname } from "./dirname.cjs";
+// import { dirname } from "./dirname.cjs";
 import { join } from "path";
 import cors from "cors";
 import { hashSync, compareSync } from "bcrypt";
@@ -10,12 +10,17 @@ import "dotenv/config.js";
 import { fetchQuestions } from "./fetchQuestions.js";
 const tokenKey = process.env.TOKEN_KEY as string;
 const app = express();
-app.use(express.static(dirname));
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 
+import { fileURLToPath } from "url";
+import path from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(__dirname));
+
 connectDB();
-console.log(dirname);
+console.log(__dirname);
 
 app.post("/greet", async (req, res) => {
   const { token } = req.body;
