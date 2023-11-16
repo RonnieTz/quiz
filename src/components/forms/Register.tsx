@@ -31,7 +31,7 @@ const Register = () => {
     if (password && password === password_2) {
       try {
         const res = await axios.post(
-          "http://192.168.1.102:3000/register",
+          "https://quiz-game-mpv3.onrender.com/register",
           data
         );
         const { user, message }: { message: string; user: User } = res.data;

@@ -19,7 +19,10 @@ const StartGameButton = () => {
         .map((item) => item.name),
     };
     try {
-      const res = await axios.post("http://192.168.1.102:3000/start", data);
+      const res = await axios.post(
+        "https://quiz-game-mpv3.onrender.com/start",
+        data
+      );
       const { message, questions }: { message: string; questions: any } =
         res.data;
       if (message === "Success") {

@@ -18,7 +18,10 @@ const Login = () => {
   const { username, password, message } = form;
   const postData = async (data: any) => {
     try {
-      const res = await axios.post("http://192.168.1.102:3000/login", data);
+      const res = await axios.post(
+        "https://quiz-game-mpv3.onrender.com/login",
+        data
+      );
       const { user, message }: { message: string; user: User } = res.data;
       if (message === "Login successful.") {
         localStorage.removeItem("token");

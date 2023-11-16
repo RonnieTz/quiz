@@ -12,9 +12,12 @@ const Welcome = () => {
 
     if (token) {
       const greet = async () => {
-        const res = await axios.post("http://192.168.1.102:3000/greet", {
-          token,
-        });
+        const res = await axios.post(
+          "https://quiz-game-mpv3.onrender.com/greet",
+          {
+            token,
+          }
+        );
         console.log(res.data);
 
         const { username } = res.data.decoded;
