@@ -1,10 +1,11 @@
-const Question = () => {
-  return (
-    <div className="question">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel saepe magni,
-      in cupiditate soluta impedit fugit provident id quod magnam!
-    </div>
-  );
+import { decode } from 'html-entities';
+
+type Props = {
+  question: string;
+};
+
+const Question = ({ question }: Props) => {
+  return <div className="question">{decode(question)}</div>;
 };
 
 export default Question;

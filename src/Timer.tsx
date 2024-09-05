@@ -1,16 +1,30 @@
 import { CircularProgress } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from './redux/store';
+import { setTimer } from './redux/appSlice';
 
 const Timer = () => {
-  const [time, setTime] = useState(0);
+  const dispatch = useDispatch();
+  const { currentQuestion, questions } = useSelector(
+    (state: RootState) => state.app
+  );
   useEffect(() => {
     const interval = setInterval(() => {
-      if (time < 20) {
-        setTime((prev) => prev + 1);
+      if (
+        questions[currentQuestion].time < 20 &&
+        questions[currentQuestion].answers.every((answer) => !answer.selected)
+      ) {
+        dispatch(
+          setTimer({
+            time: questions[currentQuestion].time + 1,
+            currentQuestion,
+          })
+        );
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [time]);
+  }, [questions[currentQuestion].time, currentQuestion, dispatch]);
   return (
     <div className="timer">
       <CircularProgress
@@ -20,7 +34,7 @@ const Timer = () => {
           color: 'rgb(14, 63, 112)',
         }}
         variant="determinate"
-        value={100 - time * 5}
+        value={100 - questions[currentQuestion].time * 5}
         thickness={2}
       />
       <CircularProgress
@@ -32,7 +46,9 @@ const Timer = () => {
         value={100}
         thickness={2}
       />
-      <span style={{ color: 'rgb(26, 26, 26)' }}>{time}</span>
+      <span style={{ color: 'rgb(26, 26, 26)' }}>
+        {questions[currentQuestion].time}
+      </span>
     </div>
   );
 };

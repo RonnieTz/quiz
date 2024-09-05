@@ -1,10 +1,14 @@
 import DetailContainer from './DetailContainer';
 import Question from './Question';
 
-const QuestionContainer = () => {
+type Props = {
+  question: string;
+};
+
+const QuestionContainer = ({ question }: Props) => {
   return (
     <div className="question-container">
-      <Question />
+      <Question question={question} />
       <DetailContainer />
     </div>
   );

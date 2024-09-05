@@ -1,9 +1,19 @@
+import { useSelector } from 'react-redux';
+import { RootState } from './redux/store';
+
 const QuestionsIndex = () => {
+  const { currentQuestion, questions } = useSelector(
+    (state: RootState) => state.app
+  );
   return (
     <div className="questions-index">
-      <p>1</p>
+      <p>
+        {currentQuestion < questions.length
+          ? currentQuestion + 1
+          : questions.length}
+      </p>
       <span>of</span>
-      <p>15</p>
+      <p>{questions.length}</p>
     </div>
   );
 };
