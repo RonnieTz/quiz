@@ -8,7 +8,6 @@ const Container = () => {
   const { questions, currentQuestion } = useSelector(
     (state: RootState) => state.app
   );
-  console.log(questions);
 
   return (
     <div className="container">

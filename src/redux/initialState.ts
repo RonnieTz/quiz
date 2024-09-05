@@ -5,6 +5,7 @@ export const initialState: {
     correct_answer: string;
     time: number;
     id: string;
+    timeIsUp: boolean;
   }[];
   currentQuestion: number;
 } = { questions: [], currentQuestion: 0 };

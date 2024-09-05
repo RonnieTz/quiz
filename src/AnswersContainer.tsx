@@ -9,26 +9,28 @@ const AnswersContainer = ({ answers }: Props) => {
   const { currentQuestion, questions } = useSelector(
     (state: RootState) => state.app
   );
+  const question = questions[currentQuestion];
   const returnClassName = (answer: {
     value: string;
     selected: boolean;
   }): 'correct' | 'incorrect' | 'not-selected' | 'initial' => {
-    if (questions[currentQuestion].answers.some((answer) => answer.selected)) {
-      if (questions[currentQuestion].correct_answer === answer.value) {
+    if (question.answers.some((answer) => answer.selected)) {
+      if (question.correct_answer === answer.value) {
         return 'correct';
       }
-      if (
-        questions[currentQuestion].correct_answer !== answer.value &&
-        answer.selected
-      ) {
+      if (question.correct_answer !== answer.value && answer.selected) {
         return 'incorrect';
       }
       if (!answer.selected) {
         return 'not-selected';
       }
     }
-    if (questions[currentQuestion].answers.every((answer) => !answer.selected))
+    if (question.answers.every((answer) => !answer.selected)) {
+      if (question.timeIsUp) {
+        return 'not-selected';
+      }
       return 'initial';
+    }
     return 'initial';
   };
   return (

@@ -6,11 +6,11 @@ const Footer = () => {
   const { currentQuestion, questions } = useSelector(
     (state: RootState) => state.app
   );
+  const question = questions[currentQuestion];
   return (
     <div className="footer">
-      {questions[currentQuestion].answers.some((answer) => answer.selected) && (
-        <NextButton />
-      )}
+      {(question.answers.some((answer) => answer.selected) ||
+        question.timeIsUp) && <NextButton />}
     </div>
   );
 };

@@ -2,29 +2,45 @@ import { CircularProgress } from '@mui/material';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './redux/store';
-import { setTimer } from './redux/appSlice';
+import { setTimer, timeUp } from './redux/appSlice';
 
 const Timer = () => {
   const dispatch = useDispatch();
   const { currentQuestion, questions } = useSelector(
     (state: RootState) => state.app
   );
+  const question = questions[currentQuestion];
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (
-        questions[currentQuestion].time < 20 &&
-        questions[currentQuestion].answers.every((answer) => !answer.selected)
+        question.time < 20 &&
+        question.answers.every((answer) => !answer.selected)
       ) {
         dispatch(
           setTimer({
-            time: questions[currentQuestion].time + 1,
+            time: question.time + 1,
             currentQuestion,
           })
         );
       }
+      if (
+        question.time === 20 &&
+        question.answers.every((answer) => !answer.selected) &&
+        !question.timeIsUp
+      ) {
+        dispatch(timeUp(currentQuestion));
+        console.log('time up');
+      }
     }, 1000);
     return () => clearInterval(interval);
-  }, [questions[currentQuestion].time, currentQuestion, dispatch]);
+  }, [
+    question.time,
+    currentQuestion,
+    dispatch,
+    question.answers,
+    question.timeIsUp,
+  ]);
   return (
     <div className="timer">
       <CircularProgress
@@ -34,21 +50,20 @@ const Timer = () => {
           color: 'rgb(14, 63, 112)',
         }}
         variant="determinate"
-        value={100 - questions[currentQuestion].time * 5}
+        value={100 - question.time * 5}
         thickness={2}
       />
       <CircularProgress
         sx={{
           position: 'absolute',
-          color: 'rgb(204, 228, 255 )',
+          color: question.timeIsUp ? 'rgb(154, 34, 34)' : 'rgb(204, 228, 255 )',
         }}
         variant="determinate"
         value={100}
         thickness={2}
       />
-      <span style={{ color: 'rgb(26, 26, 26)' }}>
-        {questions[currentQuestion].time}
-      </span>
+      <span style={{ color: 'rgb(26, 26, 26)' }}>{20 - question.time}</span>
+      {question.timeIsUp && <div className="time-up">Time's up!</div>}
     </div>
   );
 };

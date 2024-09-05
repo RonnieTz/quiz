@@ -30,6 +30,7 @@ export const fetchQuestions = createAsyncThunk(
         time: 0,
         questionAnswered: false,
         id: v4(),
+        timeIsUp: false,
       };
     });
 
@@ -59,6 +60,10 @@ const appSlice = createSlice({
         action.payload.answerIndex
       ].selected = true;
     },
+    timeUp: (state, action: PayloadAction<number>) => {
+      console.log(action.payload);
+      state.questions[action.payload].timeIsUp = true;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchQuestions.fulfilled, (state, action) => {
@@ -67,6 +72,6 @@ const appSlice = createSlice({
   },
 });
 
-export const { setCurrentQuestion, setTimer, selectQuestionAnswer } =
+export const { setCurrentQuestion, setTimer, selectQuestionAnswer, timeUp } =
   appSlice.actions;
 export default appSlice.reducer;
