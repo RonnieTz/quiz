@@ -3,11 +3,8 @@ import { RootState, AppDispatch } from '../redux/store';
 import { selectCategory } from '../redux/appSlice';
 
 const CategoryList = () => {
-  const baseURL = 'https://the-trivia-api.com/v2/questions';
   const dispatch = useDispatch<AppDispatch>();
-  const { categories, difficulties, amount } = useSelector(
-    (state: RootState) => state.app
-  );
+  const { categories } = useSelector((state: RootState) => state.app);
 
   return (
     <div className="category-list">
