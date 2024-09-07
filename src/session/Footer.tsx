@@ -1,6 +1,6 @@
 import NextButton from './NextButton';
 import { useSelector } from 'react-redux';
-import { RootState } from './redux/store';
+import { RootState } from '../redux/store';
 
 const Footer = () => {
   const { currentQuestion, questions } = useSelector(

@@ -1,8 +1,8 @@
 import { CircularProgress } from '@mui/material';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from './redux/store';
-import { setTimer, timeUp } from './redux/appSlice';
+import { RootState } from '../redux/store';
+import { setTimer, timeUp } from '../redux/appSlice';
 
 const Timer = () => {
   const dispatch = useDispatch();

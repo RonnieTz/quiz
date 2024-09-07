@@ -1,6 +1,6 @@
 import Answer from './Answer';
 import { useSelector } from 'react-redux';
-import { RootState } from './redux/store';
+import { RootState } from '../redux/store';
 
 type Props = {
   answers: { value: string; selected: boolean }[];

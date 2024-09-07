@@ -8,7 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-import { fetchQuestions } from './redux/appSlice';
+import { fetchQuestions } from './redux/asyncThunks';
 
 store.dispatch(fetchQuestions());
 

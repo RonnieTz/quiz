@@ -1,7 +1,7 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './redux/store';
-import { setCurrentQuestion } from './redux/appSlice';
+import { RootState } from '../redux/store';
+import { setCurrentQuestion } from '../redux/appSlice';
 
 const NextButton = () => {
   const dispatch = useDispatch();

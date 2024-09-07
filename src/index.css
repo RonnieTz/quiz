@@ -46,7 +46,7 @@ body {
   align-items: center;
   height: 100%;
   width: 60%;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   padding: 50px;
   box-sizing: border-box;
@@ -170,12 +170,41 @@ body {
   border: 3px solid rgba(0, 121, 74, 255);
   background-color: white;
   cursor: initial;
+  animation: correct 1.2s;
+}
+
+@keyframes correct {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .incorrect {
   border: 3px solid rgba(154, 34, 34, 255);
   background-color: rgb(242, 239, 242);
   cursor: initial;
+  animation: incorrect 0.3s;
+}
+
+@keyframes incorrect {
+  0% {
+    translate: 5%;
+  }
+  30% {
+    translate: -5%;
+  }
+  60% {
+    translate: 2%;
+  }
+  100% {
+    translate: 0%;
+  }
 }
 
 .incorrect::after {
@@ -252,4 +281,176 @@ body {
 
 .next:hover {
   background-color: rgb(11, 50, 89);
+}
+
+/* Category Container */
+
+.category-container {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 40%;
+  width: 100%;
+  background-color: rgb(247, 250, 253);
+  border-bottom: 1px solid rgba(204, 228, 255, 255);
+}
+
+.category-list-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+  text-shadow: -0.5px 0 0.1px rgba(181, 93, 0, 255),
+    0.8px 0 0.1px rgba(0, 44, 140, 255);
+  font-weight: 100;
+}
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 3px solid transparent;
+}
+
+.category:hover {
+  background-color: rgb(240, 247, 253);
+}
+
+.category:active {
+  background-color: rgb(230, 237, 243);
+}
+
+/* Difficulty Container */
+
+.difficulty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 30%;
+  width: 100%;
+  background-color: rgb(247, 250, 253);
+  border-bottom: 1px solid rgba(204, 228, 255, 255);
+}
+
+.difficulty-list-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+  text-shadow: -0.5px 0 0.1px rgba(181, 93, 0, 255),
+    0.8px 0 0.1px rgba(0, 44, 140, 255);
+  font-weight: 100;
+}
+
+.difficulty-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
+}
+
+.difficulty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 3px solid transparent;
+}
+
+.difficulty p::first-letter {
+  text-transform: capitalize;
+}
+
+.difficulty:hover {
+  background-color: rgb(240, 247, 253);
+}
+
+.difficulty:active {
+  background-color: rgb(230, 237, 243);
+}
+
+.selected {
+  background-color: white;
+  border: 3px solid rgba(20, 89, 157, 255);
+}
+
+/* Amount Container */
+
+.amount-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 30%;
+  width: 100%;
+  background-color: rgb(247, 250, 253);
+}
+
+.amount-container label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+  text-shadow: -0.5px 0 0.1px rgba(181, 93, 0, 255),
+    0.8px 0 0.1px rgba(0, 44, 140, 255);
+  font-weight: 100;
+}
+
+.amount-container input {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid rgba(204, 228, 255, 255);
+  padding: 5px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.amount-container button {
+  border-radius: 10px;
+  height: 40px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgb(14, 63, 112);
+  color: white;
+  text-shadow: -0.5px 0 0 rgb(14, 148, 218), 0.5px 0 0 rgb(161, 62, 112);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+}
+
+.amount-container button:hover {
+  background-color: rgb(11, 50, 89);
+}
+
+.amount-container button:active {
+  background-color: rgb(8, 36, 63);
 }

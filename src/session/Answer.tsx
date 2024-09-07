@@ -1,7 +1,7 @@
 import { decode } from 'html-entities';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectQuestionAnswer } from './redux/appSlice';
-import { RootState } from './redux/store';
+import { selectQuestionAnswer } from '../redux/appSlice';
+import { RootState } from '../redux/store';
 import Tick from './Tick';
 
 type Props = {

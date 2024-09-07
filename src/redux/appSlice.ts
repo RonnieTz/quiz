@@ -1,42 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import axios from 'axios';
-import { v4 } from 'uuid';
-
-export const fetchQuestions = createAsyncThunk(
-  'app/fetchQuestions',
-  async () => {
-    const response = await axios.get('https://opentdb.com/api.php?amount=10');
-
-    const data: {
-      category: string;
-      correct_answer: string;
-      difficulty: string;
-      question: string;
-      type: string;
-      incorrect_answers: string[];
-    }[] = response.data.results;
-
-    const modifiedData = data.map((question) => {
-      return {
-        question: question.question,
-        answers: [
-          { value: question.correct_answer, selected: false },
-          ...question.incorrect_answers.map((answer) => {
-            return { value: answer, selected: false };
-          }),
-        ].sort(() => Math.random() - 0.5),
-        correct_answer: question.correct_answer,
-        time: 0,
-        questionAnswered: false,
-        id: v4(),
-        timeIsUp: false,
-      };
-    });
-
-    return modifiedData;
-  }
-);
+import { fetchQuestions, fetchTags } from './asyncThunks';
 
 const appSlice = createSlice({
   name: 'app',
@@ -64,14 +28,90 @@ const appSlice = createSlice({
       console.log(action.payload);
       state.questions[action.payload].timeIsUp = true;
     },
+    selectCategory: (state, action: PayloadAction<number>) => {
+      const index = action.payload;
+      const allSelectedLength = state.categories.filter(
+        (category) => category.selected
+      ).length;
+      if (allSelectedLength === 9 && !state.categories[index].selected) {
+        state.categories.forEach((category) => {
+          category.selected = false;
+        });
+        state.categories[0].selected = true;
+        return;
+      }
+      if (allSelectedLength === 1 && state.categories[index].selected) {
+        return;
+      }
+      state.categories[index].selected = !state.categories[index].selected;
+      if (index === 0) {
+        state.categories.forEach((category, index) => {
+          if (index !== 0) {
+            category.selected = false;
+          }
+        });
+      }
+      if (index !== 0) {
+        state.categories[0].selected = false;
+      }
+    },
+    selectDifficulty: (state, action: PayloadAction<number>) => {
+      const index = action.payload;
+
+      const allSelectedLength = state.difficulties.filter(
+        (difficulty) => difficulty.selected
+      ).length;
+      if (allSelectedLength === 2 && !state.difficulties[index].selected) {
+        state.difficulties.forEach((difficulty) => {
+          difficulty.selected = false;
+        });
+        state.difficulties[0].selected = true;
+        return;
+      }
+      if (allSelectedLength === 1 && state.difficulties[index].selected) {
+        return;
+      }
+      state.difficulties[index].selected = !state.difficulties[index].selected;
+      if (index === 0) {
+        state.difficulties.forEach((difficulty, index) => {
+          if (index !== 0) {
+            difficulty.selected = false;
+          }
+        });
+      }
+      if (index !== 0) {
+        state.difficulties[0].selected = false;
+      }
+    },
+    setAmount: (state, action: PayloadAction<number | ''>) => {
+      state.amount = action.payload;
+    },
+    setMaxAmount: (state, action: PayloadAction<number>) => {
+      state.maxAmount = action.payload;
+    },
+    addTag: (state, action: PayloadAction<string>) => {
+      state.tagsSelected.push(action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchQuestions.fulfilled, (state, action) => {
       state.questions = action.payload;
     });
+    builder.addCase(fetchTags.fulfilled, (state, action) => {
+      state.tags = action.payload;
+    });
   },
 });
 
-export const { setCurrentQuestion, setTimer, selectQuestionAnswer, timeUp } =
-  appSlice.actions;
+export const {
+  setCurrentQuestion,
+  setTimer,
+  selectQuestionAnswer,
+  timeUp,
+  selectCategory,
+  selectDifficulty,
+  setAmount,
+  setMaxAmount,
+  addTag,
+} = appSlice.actions;
 export default appSlice.reducer;
