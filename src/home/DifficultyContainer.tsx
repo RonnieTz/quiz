@@ -1,17 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
 import { selectDifficulty } from '../redux/appSlice';
-// import axios from 'axios';
 
 const DifficultyContainer = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { difficulties, categories } = useSelector(
-    (state: RootState) => state.app
-  );
-  const selectedCategory = categories.find((category) => category.selected);
-  const selectedDifficulty = difficulties.find(
-    (difficulty) => difficulty.selected
-  );
+  const { difficulties } = useSelector((state: RootState) => state.app);
 
   return (
     <div className="difficulty-container">
