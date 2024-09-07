@@ -14,6 +14,7 @@ export const initialState: {
   difficulties: { selected: boolean; value: string }[];
   amount: number | '';
   maxAmount: number;
+  results: { window: 'score' | 'answers' };
 } = {
   questions: [],
   currentQuestion: 0,
@@ -42,4 +43,5 @@ export const initialState: {
   maxAmount: 50,
   tags: [],
   tagsSelected: [],
+  results: { window: 'score' },
 };

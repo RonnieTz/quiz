@@ -13,7 +13,7 @@ const AmountContainer = () => {
   return (
     <div className="amount-container">
       <label className="amount-label" htmlFor="amount">
-        Amount:
+        Select amount
       </label>
       <div style={{ position: 'relative' }}>
         <input

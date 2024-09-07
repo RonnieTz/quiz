@@ -1,0 +1,133 @@
+.results-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  border: 1px solid rgb(204, 228, 255);
+  border-radius: 15px;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(250, 252, 255);
+  border-bottom: 1px solid rgb(204, 228, 255);
+  display: flex;
+}
+
+.navbar-item {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(20, 89, 157);
+  text-shadow: -0.2px 0 0.1px rgba(181, 93, 0, 255),
+    0.5px 0 0.1px rgba(0, 44, 140, 255);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.05s;
+}
+
+.results {
+  height: calc(100% - 50px);
+  width: 100%;
+  background-color: rgb(247, 250, 253);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 50px;
+}
+
+.circular-container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.congrats-box {
+  width: 180px;
+  height: 80px;
+  background-color: rgb(20, 89, 157);
+  border-radius: 15px;
+  position: absolute;
+  top: -10px;
+  left: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-shadow: -0.2px 0 0.1px rgba(181, 93, 0, 255),
+    0.5px 0 0.1px rgba(0, 44, 140, 255);
+}
+
+.score {
+  font-size: 4rem;
+  color: rgb(20, 89, 157);
+  font-weight: 1000;
+}
+
+.play-again {
+  width: 200px;
+  height: 50px;
+  border: 3px solid rgb(208, 229, 249);
+  border-radius: 10px;
+  background-color: white;
+  color: rgb(20, 89, 157);
+  text-shadow: -0.2px 0 0.1px rgba(181, 93, 0, 255),
+    0.5px 0 0.1px rgba(0, 44, 140, 255);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.play-again:hover {
+  background-color: rgb(240, 247, 253);
+  border: 3px solid rgb(20, 89, 157);
+}
+
+.answer-results-container {
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: auto;
+  background-color: rgb(240, 247, 253);
+}
+
+.result-item {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: start;
+  padding-left: 40px;
+  align-items: center;
+  border-bottom: 1px solid rgb(204, 228, 255);
+}
+
+.result-index {
+  font-size: 1.8rem;
+  font-weight: 1000;
+  color: black;
+  margin-right: 140px;
+}
+
+.result-detail-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 25px;
+}

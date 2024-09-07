@@ -1,12 +1,13 @@
-import AnswersContainer from './session/AnswersContainer';
-import Footer from './session/Footer';
-import QuestionContainer from './session/QuestionContainer';
+import AnswersContainer from './quiz/AnswersContainer';
+import Footer from './quiz/Footer';
+import QuestionContainer from './quiz/QuestionContainer';
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CategoryContainer from './home/CategoryContainer';
-import DifficultyContainer from './home/DifficultyContainer';
-import AmountContainer from './home/AmountContainer';
+import CategoryContainer from './loader/CategoryContainer';
+import DifficultyContainer from './loader/DifficultyContainer';
+import AmountContainer from './loader/AmountContainer';
+import ResultsContainer from './results/ResultsContainer';
 
 const Container = () => {
   const { questions, currentQuestion } = useSelector(
@@ -43,6 +44,7 @@ const Container = () => {
               )
             }
           />
+          <Route path="/results" element={<ResultsContainer />} />
         </Routes>
       </div>
     </BrowserRouter>

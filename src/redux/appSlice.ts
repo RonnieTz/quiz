@@ -92,6 +92,9 @@ const appSlice = createSlice({
     addTag: (state, action: PayloadAction<string>) => {
       state.tagsSelected.push(action.payload);
     },
+    setResultsWindow: (state, action: PayloadAction<'score' | 'answers'>) => {
+      state.results.window = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchQuestions.fulfilled, (state, action) => {
@@ -113,5 +116,6 @@ export const {
   setAmount,
   setMaxAmount,
   addTag,
+  setResultsWindow,
 } = appSlice.actions;
 export default appSlice.reducer;

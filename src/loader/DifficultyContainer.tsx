@@ -8,7 +8,7 @@ const DifficultyContainer = () => {
 
   return (
     <div className="difficulty-container">
-      <div className="difficulty-list-title">Choose difficulty</div>
+      <div className="difficulty-list-title">Select difficulties</div>
       <div className="difficulty-list">
         {difficulties.map((difficulty, index) => (
           <div
