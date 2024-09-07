@@ -20,7 +20,7 @@ const Results = () => {
         />
         <CircularProgress
           sx={{ position: 'absolute', color: 'rgb(20, 89, 157)' }}
-          value={50}
+          value={(correctAnswers / questions.length) * 100}
           variant="determinate"
           size={'400px'}
         ></CircularProgress>
